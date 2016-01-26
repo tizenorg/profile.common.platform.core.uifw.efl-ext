@@ -1,0 +1,99 @@
+class Eext.Floatingbutton (Elm.Layout) {
+   eo_prefix: eext_obj_floatingbutton;
+   methods {
+      @property pos {
+         set {
+            [[
+            Set the floatingbutton position
+
+            The floatingbutton can be moved among predefined positions
+            (LEFT_OUT, LEFT, CENTER, RIGHT, RIGHT_OUT),
+            eext_floatingbutton_pos_set() moves floatingbutton to a given position immediately
+            (without animation).
+
+            return EINA_TRUE on success, EINA_FALSE otherwise.
+            ]]
+            return: bool;
+         }
+         get {
+            [[
+            Get the floatingbutton position
+
+            return Floatingbutton position with Eext_Floatingbutton_Pos enumeration
+
+            see eext_floatingbutton_pos_set()
+            ]]
+         }
+         values {
+            pos: Eext_Floatingbutton_Pos; [[ the floatingbutton position ]]
+         }
+      }
+      @property movement_block {
+         set {
+            [[
+            Set whether floatingbutton can be moved or not.
+
+            By default, floatingbutton are movable by user interaction.
+            ]]
+         }
+         get {
+            [[
+            Get movability for a given floatingbutton widget.
+
+            return EINA_TRUE, if obj is set to be unmovable,
+            EINA_FALSE, if it's movable.
+
+            see eext_floatingbutton_movement_block_set()
+            ]]
+         }
+         values {
+            block: Eina_Bool; [[ the floatingbutton movability ]]
+         }
+      }
+      @property mode {
+         set {
+            [[
+            Set floatingbutton mode.
+
+            Positions where floatingbutton can stop are restrained by mode.
+            ]]
+         }
+         get {
+            [[
+            Get floatingbutton mode.
+
+            see eext_floatingbutton_mode_set()
+            ]]
+         }
+         values {
+            mode: Eext_Floatingbutton_Mode; [[ floatingbutton mode ]]
+         }
+      }
+      pos_bring_in {
+         [[
+         Set the floatingbutton position with animation
+
+         Move floatingbutton similar to eext_floatingbutton_pos_set(),
+         but with animation.
+
+         return EINA_TRUE on success, EINA_FALSE otherwise.
+
+         see eext_floatingbutton_pos_set()
+         ]]
+         return: Eina_Bool;
+         params {
+            @in pos: const(Eext_Floatingbutton_Pos); [[ the floatingbutton position ]]
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm.Container.content_set;
+      Elm.Container.content_get;
+      Elm.Container.content_unset;
+      Elm.Widget.theme_apply;
+   }
+}
